@@ -1,0 +1,47 @@
+# **Cloud-Native SOC & Detection Lab (GCP)**
+
+**Developed by: Purvansh Bhatt**
+
+## **🎯 Overview**
+
+This project involves the deployment of a distributed Security Operations Center (SOC) within **Google Cloud Platform (GCP)**. The lab demonstrates the integration of a SIEM (Wazuh), deep endpoint telemetry (Sysmon), and offensive security tools to validate detection capabilities against modern adversary tactics. It provides a full-stack environment for analyzing 64,000+ real-world attack events and validating security controls.
+
+## **🏗️ Architecture**
+
+* **SIEM/XDR:** Wazuh Manager (Ubuntu 24.04 LTS)  
+* **Endpoint:** Windows Server 2025 with Sysmon Integration  
+* **Attacker:** Kali Linux (Cloud-native instance)  
+* **Network:** Custom VPC with granular firewall rules (TCP 1514/1515, RDP, HTTPS)
+
+## **🧪 Simulated Tactics & Detections (MITRE ATT\&CK Mapping)**
+
+| MITRE Category | Technique | Tool | Wazuh Alert | Severity |
+| :---- | :---- | :---- | :---- | :---- |
+| **Reconnaissance** | Active Scanning (T1595) | Nmap | Network scan detected | Level 10 |
+| **Credential Access** | Brute Force (T1110) | Hydra | Multiple Windows logon failures | Level 10 |
+| **Credential Access** | OS Credential Dumping (T1003) | Mimikatz | LSASS process access detected | Level 12 |
+| **Execution** | PowerShell Obfuscation (T1059) | CLI | Encoded command execution | Level 12 |
+| **Impact** | Data Manipulation (T1565) | Manual | Integrity checksum changed (FIM) | Level 7 |
+
+## **📈 Key Achievements**
+
+* **Big Data Analysis:** Successfully ingested and analyzed **64,000+ security events** in a single session, identifying source attack patterns across VPC boundaries and correlating individual logon failures into actionable high-severity alerts.  
+* **Telemetry Engineering:** Integrated **Sysmon** (SwiftOnSecurity configuration) into the Wazuh pipeline, enabling the detection of "Living off the Land" (LotL) techniques and obfuscated scripts that bypass standard signature-based defenses.  
+* **GRC Remediation:** Identified a critical lack of "Account Lockout" controls in the default Windows baseline. Formulated and implemented a remediation plan (5-attempt lockout threshold) and verified compliance through iterative re-testing and validation.  
+* **File Integrity Monitoring (FIM):** Configured real-time monitoring for sensitive directories, capturing SHA256 hash changes and establishing a forensic audit trail for unauthorized modifications.
+
+## **📸 Proof of Concept (Screenshots)**
+
+* **Brute Force Detection:** Evidence of 64k+ events and high-severity correlations in the Wazuh dashboard.  
+* **FIM Monitoring:** Evidence of real-time detection of unauthorized file modifications to sensitive payroll data.  
+* **PowerShell Logs:** Sysmon-captured process telemetry showing successfully decoded and flagged obfuscated command execution.
+
+## **🏁 Conclusion & Recommendations**
+
+This lab proves that visibility is the primary defense against modern threats. Based on the findings, the following remediations were implemented:
+
+1. **Account Lockout Policy:** Prevented infinite brute-force attempts.  
+2. **Network Hardening:** Restricted RDP access to specific administrative IP ranges.  
+3. **Advanced Auditing:** Enabled Process Creation and LSASS access auditing via Sysmon.
+
+**Contact:** [purvansh95b@gmail.com](mailto:purvansh95b@gmail.com) | [Portfolio](https://www.purvanshbhatt.github.io) | [LinkedIn](https://www.linkedin.com/in/purvanshbhatt) | [GitHub](https://www.github.com/purvanshbhatt)
