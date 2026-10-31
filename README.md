@@ -20,6 +20,11 @@ This repository serves as a technical annex to my [Professional Portfolio](http:
 - **[GCP SOC Lab Report](./Incident-Reports/2026-04-17-GCP-SOC-Lab.md):** Detecting T1110 (Brute Force) and T1059 (PowerShell Obfuscation).
 - **[LockBit 3.0 Simulation](./Incident-Reports/Ransomware-Analysis.md):** Containment and recovery workflows.
 
+### ⚡ [Systems & Kernel Engineering: Kali Maintenance & Crash Recovery](./kali-maintenance-scripts/)
+*Forensic memory analysis and kernel remediation of hybrid GPU power state desync.*
+- **[Technical Forensic Report](./kali-maintenance-scripts/TECHNICAL_REPORT.md):** Diagnosing VRAM desynchronization, kernel traps at `0x39d303c40000`, and dpkg general protection faults across ACPI sleep states.
+- **[Automation Toolkit & Recovery Suite](./kali-maintenance-scripts/README.md):** Production-grade bash suite (`fix-all`, `fix-apps`, `update-all`) for automated recovery, kernel hardening, and rolling release sync.
+
 ### ⚖️ [Compliance & GRC](./Compliance-GRC/)
 *Policy engineering and risk management.*
 - **Vulnerability Management Policy:** Standards for cloud-native asset scanning.
